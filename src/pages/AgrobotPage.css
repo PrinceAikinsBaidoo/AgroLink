@@ -289,6 +289,16 @@
     cursor: not-allowed;
 }
 
+.agrobot-send--stop {
+    background: #EF4444;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.agrobot-send--stop:hover {
+    background: #DC2626;
+    transform: scale(1.05);
+}
+
 /* Markdown inside bot bubbles */
 .agrobot-msg--bot .agrobot-msg__bubble p {
     margin: 0 0 8px;

@@ -6,6 +6,9 @@ export default defineConfig({
   plugins: [react()],
   server: {
     allowedHosts: ["semiacidic-glycosidic-federico.ngrok-free.dev"],
-    port: 3000
+    port: 3000,
+    proxy: {
+      '/api': 'http://localhost:3001'
+    }
   }
 })
