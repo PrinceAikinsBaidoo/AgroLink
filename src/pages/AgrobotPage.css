@@ -1,0 +1,301 @@
+.agrobot-page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Header */
+.agrobot-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: calc(var(--header-safe-padding) + 4px) 32px 18px;
+    background: var(--primary-green);
+    color: white;
+    flex-shrink: 0;
+}
+
+.agrobot-header__left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.agrobot-header__icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.agrobot-header__title {
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+}
+
+.agrobot-header__actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.agrobot-clear-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 6px 14px;
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.agrobot-clear-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.agrobot-header__settings {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: background 0.2s;
+}
+
+.agrobot-header__settings:hover {
+    background: rgba(255, 255, 255, 0.33);
+}
+
+/* Suggestion chips */
+.agrobot-chips {
+    display: flex;
+    gap: 8px;
+    padding: 12px 24px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    background: var(--dark-green);
+    flex-shrink: 0;
+}
+
+.agrobot-chips::-webkit-scrollbar {
+    display: none;
+}
+
+.agrobot-chip {
+    flex-shrink: 0;
+    padding: 7px 18px;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.12);
+    border: 1.5px solid rgba(255, 255, 255, 0.28);
+    color: white;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.agrobot-chip:hover {
+    background: rgba(255, 255, 255, 0.24);
+}
+
+/* Chat area */
+.agrobot-chat {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: var(--bg);
+}
+
+/* Desktop: constrain chat width for readability */
+@media (min-width: 769px) {
+    .agrobot-chat {
+        padding: 24px clamp(24px, 10%, 100px);
+    }
+
+    .agrobot-input-bar {
+        padding: 14px clamp(24px, 10%, 100px);
+    }
+}
+
+.agrobot-msg {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.agrobot-msg--user {
+    justify-content: flex-end;
+}
+
+.agrobot-msg--bot {
+    justify-content: flex-start;
+}
+
+.agrobot-msg__avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--primary-green);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.agrobot-msg__bubble {
+    max-width: 72%;
+    padding: 13px 18px;
+    border-radius: 18px;
+    font-size: 15px;
+    line-height: 1.58;
+    animation: bubbleIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.agrobot-msg--user .agrobot-msg__bubble {
+    background: var(--primary-green);
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+.agrobot-msg--bot .agrobot-msg__bubble {
+    background: white;
+    color: var(--text-main);
+    box-shadow: var(--shadow-sm);
+    border-bottom-left-radius: 4px;
+}
+
+@keyframes bubbleIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Typing indicator */
+.agrobot-msg__bubble--typing {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 14px 18px;
+}
+
+.agrobot-msg__bubble--typing span {
+    width: 8px;
+    height: 8px;
+    background: var(--primary-green);
+    border-radius: 50%;
+    display: inline-block;
+    animation: typingBounce 1.2s infinite ease-in-out;
+}
+
+.agrobot-msg__bubble--typing span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.agrobot-msg__bubble--typing span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typingBounce {
+
+    0%,
+    80%,
+    100% {
+        transform: scale(0.7);
+        opacity: 0.4;
+    }
+
+    40% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+/* Input bar */
+.agrobot-input-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 24px;
+    background: white;
+    border-top: 1px solid var(--border-light);
+    flex-shrink: 0;
+}
+
+.agrobot-input {
+    flex: 1;
+    padding: 13px 20px;
+    border-radius: var(--radius-full);
+    border: 1.5px solid var(--border-light);
+    background: var(--light-green);
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--text-main);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.agrobot-input:focus {
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(59, 130, 62, 0.1);
+}
+
+.agrobot-input::placeholder {
+    color: #A8BEB0;
+}
+
+.agrobot-send {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--primary-green);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s;
+    box-shadow: 0 4px 12px rgba(59, 130, 62, 0.3);
+}
+
+.agrobot-send:hover:not(:disabled) {
+    background: var(--dark-green);
+    transform: scale(1.05);
+}
+
+.agrobot-send:disabled {
+    background: #C8DAC9;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .agrobot-header {
+        padding: calc(var(--header-safe-padding) + 4px) 18px 16px;
+    }
+
+    .agrobot-chips {
+        padding: 10px 18px;
+    }
+}
