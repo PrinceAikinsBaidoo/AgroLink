@@ -6,7 +6,7 @@ const allNavItems = [
     { id: 'buyerhome', label: 'Home', Icon: Home, roles: ['buyer'] },
     { id: 'home', label: 'Home', Icon: Home, roles: ['farmer', 'engineer'] },
     { id: 'market', label: 'Market', Icon: ShoppingBag, roles: ['buyer', 'farmer', 'engineer'] },
-    { id: 'agrobot', label: 'Agrobot', Icon: Leaf, roles: ['farmer', 'engineer'] },
+    { id: 'agrobot', label: 'Agrobot', Icon: Leaf, roles: ['buyer', 'farmer', 'engineer'] },
     { id: 'machinery', label: 'Machinery', Icon: Cpu, roles: ['engineer'] },
     { id: 'myshop', label: 'My Shop', Icon: Tag, roles: ['farmer'] },
     { id: 'profile', label: 'Profile', Icon: User, roles: ['buyer', 'farmer', 'engineer'] },
