@@ -355,6 +355,10 @@ function App() {
     const saved = localStorage.getItem('agrolink_messages')
     return saved ? JSON.parse(saved) : []
   })
+  const [agrobotChat, setAgrobotChat] = useState(() => {
+    const saved = localStorage.getItem('agrolink_agrobot_chat')
+    return saved ? JSON.parse(saved) : null
+  })
   const [cart, setCart] = useState([])
   const [viewCounts, setViewCounts] = useState(() => {
     const saved = localStorage.getItem('agrolink_view_counts')
@@ -397,6 +401,13 @@ function App() {
   useEffect(() => {
     localStorage.setItem('agrolink_messages', JSON.stringify(messages))
   }, [messages])
+
+  // Persistence: Save agrobot chat to localStorage
+  useEffect(() => {
+    if (agrobotChat) {
+      localStorage.setItem('agrolink_agrobot_chat', JSON.stringify(agrobotChat))
+    }
+  }, [agrobotChat])
 
   // Triggering HMR to clear Vite's module cache
   console.log("App mounted: forcing cache clear for lucide-react");
@@ -729,7 +740,22 @@ function App() {
           onSendMessage={handleSendMessage}
         />
       )
-      case 'agrobot': return <AgrobotPage userRole={userRole} currentUser={currentUser} />
+      case 'agrobot': return (
+        <AgrobotPage
+          userRole={userRole}
+          currentUser={currentUser}
+          products={products.filter(p => p && p.ownerEmail === currentUser?.email)}
+          orders={orders.filter(o => {
+            if (!o) return false
+            if (userRole === 'buyer') return o.buyerEmail === currentUser?.email
+            const product = products.find(p => p && p.id === o.productId)
+            return product && product.ownerEmail === currentUser?.email
+          })}
+          machines={machines.filter(m => m && m.ownerEmail === currentUser?.email)}
+          savedChat={agrobotChat}
+          onChatChange={setAgrobotChat}
+        />
+      )
       case 'myshop': return (
         <MyShopPage
           products={userProducts}

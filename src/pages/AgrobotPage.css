@@ -289,6 +289,60 @@
     cursor: not-allowed;
 }
 
+/* Markdown inside bot bubbles */
+.agrobot-msg--bot .agrobot-msg__bubble p {
+    margin: 0 0 8px;
+}
+
+.agrobot-msg--bot .agrobot-msg__bubble p:last-child {
+    margin-bottom: 0;
+}
+
+.agrobot-msg--bot .agrobot-msg__bubble strong {
+    font-weight: 700;
+    color: var(--dark-green);
+}
+
+.agrobot-msg--bot .agrobot-msg__bubble ul,
+.agrobot-msg--bot .agrobot-msg__bubble ol {
+    margin: 6px 0;
+    padding-left: 20px;
+}
+
+.agrobot-msg--bot .agrobot-msg__bubble li {
+    margin-bottom: 4px;
+}
+
+.agrobot-msg--bot .agrobot-msg__bubble h1,
+.agrobot-msg--bot .agrobot-msg__bubble h2,
+.agrobot-msg--bot .agrobot-msg__bubble h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 10px 0 4px;
+    color: var(--dark-green);
+}
+
+.agrobot-msg--bot .agrobot-msg__bubble code {
+    background: rgba(0, 0, 0, 0.06);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.agrobot-msg--bot .agrobot-msg__bubble pre {
+    background: rgba(0, 0, 0, 0.06);
+    padding: 10px 14px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 8px 0;
+    font-size: 13px;
+}
+
+.agrobot-msg--bot .agrobot-msg__bubble pre code {
+    background: none;
+    padding: 0;
+}
+
 /* Mobile */
 @media (max-width: 768px) {
     .agrobot-header {
