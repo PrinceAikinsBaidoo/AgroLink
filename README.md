@@ -21,6 +21,12 @@ AgroLink is a web-based agricultural marketplace connecting Ghanaian farmers, bu
 - **localStorage** for client-side data persistence
 - **CSS** with custom properties and dark mode support
 
+## Languages
+
+- JavaScript
+- CSS
+- HTML
+
 ## Getting Started
 
 ```bash
