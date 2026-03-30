@@ -27,6 +27,10 @@ AgroLink is a web-based agricultural marketplace connecting Ghanaian farmers, bu
 - CSS
 - HTML
 
+## Collaborators
+
+- [PrinceAikinsBaidoo](https://github.com/PrinceAikinsBaidoo)
+
 ## Getting Started
 
 ```bash
